@@ -12,94 +12,90 @@
 @font-face { font-family: "Archivo Black"; src: url("/fonts/ArchivoBlack.ttf") format("truetype"); }
 @font-face { font-family: "Plex Mono"; src: url("/fonts/PlexMono.ttf") format("truetype"); }
 @font-face { font-family: "Plex Mono Med"; src: url("/fonts/PlexMono-Medium.ttf") format("truetype"); }
-:root { --bg:#f7f9fa; --card:#ffffff; --line:#e3e8ea; --line2:#cfd9de; --ink:#0f1419; --dim:#536471; --blue:#1d9bf0; --blue-d:#0f7ae5; --red:#f0453a; --violet:#7856ff; --gold:#b8860b; --goldbg:#fff6d8; }
+:root { --bg:#06090d; --panel:#0a0f16; --panel2:#0d141d; --line:#1b2530; --line2:#2a3644; --ink:#eef3f6; --dim:#8b98a1; --blue:#1d9bf0; --soft:#7cc4f7; --violet:#8a5cff; --red:#f0453a; --gold:#ffb03a; }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { background:var(--bg); color:var(--ink); font-family:"Plex Mono",monospace; font-size:15px; line-height:1.65; overflow-x:hidden; }
-a { color:var(--blue-d); }
-.hud { position:sticky; top:0; z-index:50; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; padding:10px 16px; background:rgba(255,255,255,.94); border-bottom:1px solid var(--line2); font-size:11px; letter-spacing:.14em; color:var(--dim); }
-.hud b { color:var(--ink); font-weight:400; } .hud .on { color:var(--blue-d); }
-nav { display:flex; gap:18px; flex-wrap:wrap; padding:12px 16px; background:var(--card); border-bottom:1px solid var(--line); font-size:12px; letter-spacing:.16em; }
-nav a { color:var(--dim); text-decoration:none; } nav a:hover { color:var(--blue-d); }
+a { color:var(--soft); }
+.hud { position:sticky; top:0; z-index:50; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; padding:10px 16px; background:rgba(6,9,13,.94); border-bottom:1px solid var(--line); font-size:11px; letter-spacing:.14em; color:var(--dim); }
+.hud b { color:var(--ink); font-weight:400; } .hud .on { color:var(--blue); }
+nav { display:flex; gap:18px; flex-wrap:wrap; padding:12px 16px; border-bottom:1px solid var(--line); font-size:12px; letter-spacing:.16em; }
+nav a { color:var(--dim); text-decoration:none; } nav a:hover { color:var(--blue); }
 nav .brand { color:var(--ink); font-family:"Plex Mono Med",monospace; margin-right:auto; }
-.hero { padding:52px 16px 8px; text-align:center; }
-h1 { font-family:"Archivo Black",sans-serif; font-size:clamp(54px,12vw,124px); line-height:.92; color:var(--ink); }
-h1 em { font-style:normal; color:var(--blue); }
-.tag { margin-top:14px; letter-spacing:.34em; font-size:clamp(13px,3vw,18px); color:var(--ink); }
-.sub { margin:18px auto 0; max-width:620px; color:var(--dim); font-size:14px; }
-.sub b { color:var(--ink); font-weight:400; }
-.scanbox { margin:32px auto 6px; width:min(520px,94vw); border:1px solid var(--line2); background:var(--card); border-radius:18px; position:relative; overflow:hidden; text-align:left; box-shadow:0 10px 34px rgba(15,20,25,.07); }
-.scanbox .corners i { position:absolute; width:20px; height:20px; border:2px solid var(--ink); z-index:3; }
-.scanbox .corners i:nth-child(1){ top:8px; left:8px; border-right:0; border-bottom:0; }
-.scanbox .corners i:nth-child(2){ top:8px; right:8px; border-left:0; border-bottom:0; }
-.scanbox .corners i:nth-child(3){ bottom:8px; left:8px; border-right:0; border-top:0; }
-.scanbox .corners i:nth-child(4){ bottom:8px; right:8px; border-left:0; border-top:0; }
-.beam { position:absolute; left:0; right:0; height:64px; top:-70px; background:linear-gradient(180deg, rgba(29,155,240,0), rgba(29,155,240,.30), rgba(29,155,240,0)); animation:beam 3.6s linear infinite; z-index:2; pointer-events:none; }
-@keyframes beam { 0% { top:-70px; } 100% { top:110%; } }
-.tweet { padding:20px 20px 14px; }
-.tweet .who { display:flex; gap:10px; align-items:center; }
-.tweet .ava { width:38px; height:38px; border-radius:50%; background:var(--blue); display:grid; place-items:center; font-family:"Archivo Black",sans-serif; color:#fff; font-size:18px; }
-.tweet .nm { font-family:"Plex Mono Med",monospace; font-size:14px; }
-.tweet .hd { color:var(--dim); font-size:12px; }
-.tweet .tx { margin-top:10px; font-size:14px; line-height:1.6; }
-.tweet .tx b { color:var(--blue-d); font-weight:400; }
-.scanlog { border-top:1px dashed var(--line2); padding:12px 20px 16px; font-size:12px; color:var(--dim); min-height:118px; }
-.scanlog div { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.scanlog .ok { color:var(--blue-d); } .scanlog .pay { color:var(--gold); font-family:"Plex Mono Med",monospace; }
-.liveband { max-width:1060px; margin:26px auto 0; padding:0 16px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.hero { padding:40px 16px 6px; background-image:radial-gradient(circle, rgba(238,243,246,.05) 1.5px, transparent 1.7px); background-size:26px 26px; }
+.hero-in { max-width:1060px; margin:0 auto; display:grid; grid-template-columns:1.05fr .95fr; gap:30px; align-items:start; }
+@media (max-width:820px) { .hero-in { grid-template-columns:1fr; } }
+h1 { font-family:"Archivo Black",sans-serif; font-size:clamp(50px,8.6vw,96px); line-height:.92; }
+h1 em { font-style:normal; background:linear-gradient(180deg, var(--soft), var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.tag { margin-top:12px; letter-spacing:.32em; font-size:clamp(12px,2.4vw,16px); }
+.flow { margin-top:20px; display:flex; gap:8px; flex-wrap:wrap; font-size:11px; letter-spacing:.14em; color:var(--dim); }
+.flow span { border:1px solid var(--line2); padding:6px 10px; }
+.flow b { color:var(--soft); font-weight:400; }
+.postbox { border:1.5px dashed var(--blue); background:rgba(29,155,240,.06); padding:14px 16px; margin-top:18px; font-size:14px; line-height:1.7; }
+.btn { display:inline-block; margin-top:12px; background:var(--blue); color:#04121f; border:0; border-radius:999px; padding:11px 22px; font-family:"Plex Mono Med",monospace; font-size:13px; letter-spacing:.06em; cursor:pointer; text-decoration:none; }
+.btn.ghost { background:transparent; color:var(--soft); border:1.5px solid var(--blue); }
+.note { margin-top:12px; color:var(--dim); font-size:12.5px; }
+.xframe { position:relative; border:1px solid var(--line2); background:rgba(10,15,22,.6); padding:10px; }
+.xframe .corners i { position:absolute; width:22px; height:22px; border:3px solid var(--blue); z-index:3; }
+.xframe .corners i:nth-child(1){ top:-3px; left:-3px; border-right:0; border-bottom:0; }
+.xframe .corners i:nth-child(2){ top:-3px; right:-3px; border-left:0; border-bottom:0; }
+.xframe .corners i:nth-child(3){ bottom:-3px; left:-3px; border-right:0; border-top:0; }
+.xframe .corners i:nth-child(4){ bottom:-3px; right:-3px; border-left:0; border-top:0; }
+.xframe svg { display:block; width:100%; height:auto; }
+.xbeam { position:absolute; left:10px; right:10px; height:52px; top:-56px; background:linear-gradient(180deg, rgba(29,155,240,0), rgba(29,155,240,.30), rgba(29,155,240,0)); animation:xbeam 4.2s linear infinite; z-index:2; pointer-events:none; }
+@keyframes xbeam { 0% { top:-56px; } 100% { top:104%; } }
+.liveband { max-width:1060px; margin:24px auto 0; padding:0 16px; display:grid; grid-template-columns:1fr 1fr; gap:22px; }
 @media (max-width:760px) { .liveband { grid-template-columns:1fr; } }
-.livecard { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; }
-.livecard .kick { font-size:11px; letter-spacing:.26em; color:var(--blue-d); display:flex; align-items:center; gap:8px; }
+.livecard { background:var(--panel); border:1px solid var(--line); padding:16px 18px; }
+.livecard .kick { font-size:11px; letter-spacing:.26em; color:var(--soft); display:flex; align-items:center; gap:8px; }
 .dot { width:8px; height:8px; border-radius:50%; background:var(--blue); display:inline-block; animation:pulse 1.6s ease-in-out infinite; }
 @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.25; } }
-.livecard h3 { font-family:"Archivo Black",sans-serif; font-size:22px; margin:6px 0 10px; }
+.livecard h3 { font-family:"Archivo Black",sans-serif; font-size:20px; margin:5px 0 8px; }
 .feed { font-size:12.5px; }
-.feed .row { display:flex; justify-content:space-between; gap:10px; padding:8px 2px; border-bottom:1px dashed var(--line); align-items:baseline; }
+.feed .row { display:flex; justify-content:space-between; gap:10px; padding:7px 2px; border-bottom:1px dashed var(--line); align-items:baseline; }
 .feed .row:last-child { border-bottom:0; }
 .feed a { text-decoration:none; font-family:"Plex Mono Med",monospace; }
 .feed .meta { color:var(--dim); white-space:nowrap; }
 .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
-.chip { border:1.5px solid var(--ink); border-radius:999px; padding:6px 12px; font-size:12.5px; font-family:"Plex Mono Med",monospace; background:var(--card); }
+.chip { border:1.5px solid var(--ink); border-radius:999px; padding:6px 12px; font-size:12.5px; font-family:"Plex Mono Med",monospace; }
 .chip small { color:var(--dim); font-family:"Plex Mono",monospace; }
-.chip.rare { border-color:var(--violet); color:var(--violet); }
-.chip.mythic { border-color:var(--red); color:var(--red); }
-.chip.common { border-color:var(--blue); color:var(--blue-d); }
+.chip.rare { border-color:var(--violet); color:#c0a8ff; }
+.chip.mythic { border-color:var(--red); color:#ff8d80; }
+.chip.common { border-color:var(--blue); color:var(--soft); }
 .empty { color:var(--dim); font-size:13px; padding:8px 2px; }
-main { max-width:1060px; margin:0 auto; padding:10px 16px 30px; }
-section { border:1px solid var(--line); background:var(--card); border-radius:14px; margin-top:22px; padding:22px 20px; }
-.kick { font-size:11px; letter-spacing:.26em; color:var(--blue-d); }
-h2 { font-family:"Archivo Black",sans-serif; font-size:clamp(26px,5.4vw,40px); line-height:1.05; margin:8px 0 10px; }
+main { max-width:1060px; margin:0 auto; padding:8px 16px 30px; }
+section { border:1px solid var(--line); background:var(--panel); margin-top:22px; padding:22px 20px; }
+.kick { font-size:11px; letter-spacing:.26em; color:var(--soft); }
+h2 { font-family:"Archivo Black",sans-serif; font-size:clamp(26px,5.4vw,38px); line-height:1.05; margin:8px 0 8px; }
 p.dim, .dim { color:var(--dim); }
-.ledger { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-top:16px; }
-.ledger div { background:var(--card); padding:12px 14px; }
+.showcase { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; margin-top:16px; }
+@media (max-width:820px) { .showcase { grid-template-columns:1fr; } }
+.art-card { border:1px solid var(--line2); background:var(--panel2); padding:10px; }
+.art-card img { display:block; width:100%; height:auto; }
+.art-card .cap { display:flex; justify-content:space-between; align-items:baseline; padding:10px 2px 2px; }
+.art-card .cls { font-family:"Archivo Black",sans-serif; font-size:19px; }
+.art-card .amt { font-size:12px; color:var(--dim); }
+.art-card.common .cls { color:var(--soft); } .art-card.rare .cls { color:#c0a8ff; } .art-card.mythic .cls { color:#ff8d80; }
+.facts { display:flex; gap:22px; flex-wrap:wrap; margin-top:16px; font-size:13px; color:var(--dim); }
+.facts b { color:var(--ink); font-family:"Plex Mono Med",monospace; font-weight:400; font-size:16px; display:block; }
+.ledger { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:16px; }
+.ledger div { background:var(--panel); padding:12px 14px; }
 .ledger .v { font-family:"Plex Mono Med",monospace; font-size:19px; }
 .ledger .k { font-size:10px; letter-spacing:.2em; color:var(--dim); margin-top:3px; }
-.btn { display:inline-block; margin-top:14px; background:var(--blue); color:#fff; border:0; border-radius:999px; padding:11px 22px; font-family:"Plex Mono Med",monospace; font-size:13px; letter-spacing:.06em; cursor:pointer; text-decoration:none; }
-.btn:hover { background:var(--blue-d); }
-.btn.ghost { background:transparent; color:var(--blue-d); border:1.5px solid var(--blue); }
-.postbox { border:1.5px dashed var(--blue); border-radius:12px; background:#f0f8ff; padding:16px; margin-top:14px; font-size:14px; line-height:1.7; }
-table { width:100%; border-collapse:collapse; margin-top:14px; font-size:13px; }
-th, td { border:1px solid var(--line); padding:10px 12px; text-align:left; }
-th { color:var(--dim); font-weight:400; letter-spacing:.12em; font-size:11px; }
-td.r { text-align:right; font-family:"Plex Mono Med",monospace; }
-tr.mythic td { color:var(--red); }
-.tool { margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; }
-.tool input { flex:1; min-width:220px; background:var(--bg); border:1px solid var(--line2); border-radius:10px; color:var(--ink); padding:11px 12px; font-family:"Plex Mono",monospace; font-size:13px; }
-.tool button { background:var(--ink); color:#fff; border:0; border-radius:999px; padding:11px 20px; font-family:"Plex Mono Med",monospace; cursor:pointer; font-size:13px; }
-.result { margin-top:12px; font-size:13px; color:var(--dim); border-left:3px solid var(--blue); background:#f0f8ff; border-radius:0 10px 10px 0; padding:10px 12px; display:none; }
+.tool { margin-top:14px; display:flex; gap:8px; flex-wrap:wrap; }
+.tool input { flex:1; min-width:220px; background:var(--bg); border:1px solid var(--line2); color:var(--ink); padding:11px 12px; font-family:"Plex Mono",monospace; font-size:13px; }
+.tool button { background:var(--ink); color:#06090d; border:0; border-radius:999px; padding:11px 20px; font-family:"Plex Mono Med",monospace; cursor:pointer; font-size:13px; }
+.result { margin-top:12px; font-size:13px; color:var(--dim); border-left:3px solid var(--blue); background:rgba(29,155,240,.06); padding:10px 12px; display:none; }
 .result b { color:var(--ink); font-weight:400; }
-details { margin-top:14px; border:1px solid var(--line); border-radius:10px; padding:12px 14px; }
-summary { cursor:pointer; color:var(--blue-d); font-size:13px; letter-spacing:.06em; }
+details { margin-top:14px; border:1px solid var(--line); padding:12px 14px; }
+summary { cursor:pointer; color:var(--soft); font-size:13px; letter-spacing:.06em; }
 pre { margin-top:10px; white-space:pre-wrap; font-size:12px; color:var(--dim); line-height:1.7; }
-.log { font-size:12px; color:var(--dim); }
-.log div { padding:7px 2px; border-bottom:1px dashed var(--line); display:flex; justify-content:space-between; gap:10px; }
-.log .k2 { color:var(--blue-d); } .log .gold { color:var(--gold); }
 .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
 @media (max-width:760px) { .grid2 { grid-template-columns:1fr; } }
-footer { border-top:1px solid var(--line); margin-top:26px; padding:20px 16px 30px; font-size:12px; color:var(--dim); background:var(--card); }
+footer { border-top:1px solid var(--line); margin-top:26px; padding:20px 16px 30px; font-size:12px; color:var(--dim); }
 footer .big { font-family:"Archivo Black",sans-serif; font-size:clamp(40px,9vw,84px); color:transparent; -webkit-text-stroke:1.5px var(--line2); line-height:1; }
 footer a { word-break:break-all; }
-@media (prefers-reduced-motion: reduce) { .beam, .dot { animation:none; } html { scroll-behavior:auto; } }
+@media (prefers-reduced-motion: reduce) { .xbeam, .dot { animation:none; } html { scroll-behavior:auto; } }
 </style>
 </head>
 <body>
@@ -111,21 +107,36 @@ footer a { word-break:break-all; }
 </div>
 <nav>
   <span class="brand">XSCANX_</span>
-  <a href="#post">01 POST</a><a href="#submit">02 SUBMIT</a><a href="#pass">03 PASS</a><a href="#claim">04 CLAIM</a><a href="#log">SCAN LOG</a><a href="/xscan-skill.md">AGENT GUIDE</a>
+  <a href="#post">POST</a><a href="#mint">MINT THE PASS</a><a href="#claim">CLAIM</a><a href="/xscan-skill.md">AGENT GUIDE</a>
 </nav>
 
-<div class="hero">
-  <h1>XSCAN<em>X</em></h1>
-  <div class="tag">POST. PROOF. PAID.</div>
-  <p class="sub">Agent-only tweet-to-mint on BNB Chain. Your agent writes the post, you publish it on X, your agent files the link. A scan reads the post and pays <b>25,000 $XSCAN</b> for every pass. Want more? Mint the Pass. Its rarity decides the big claim.</p>
-  <div class="scanbox">
-    <div class="corners"><i></i><i></i><i></i><i></i></div>
-    <div class="beam"></div>
-    <div class="tweet">
-      <div class="who"><div class="ava">X</div><div><div class="nm">you</div><div class="hd">@yourhandle · posted via your agent</div></div></div>
-      <div class="tx">Scanning in. I post, the scan verifies, my agent mints. <b>$XSCAN</b> <b>@xscanxbnb</b> <b>xscanx.xyz</b></div>
+<div class="hero" id="post">
+  <div class="hero-in">
+    <div>
+      <h1>XSCAN<em>X</em></h1>
+      <div class="tag">POST. PROOF. PAID.</div>
+      <div class="flow"><span><b>1</b> POST</span><span><b>2</b> AGENT FILES THE LINK</span><span><b>3</b> SCAN PAYS 25,000 $XSCAN</span></div>
+      <div class="postbox" id="postText">Scanning in. I post, the scan verifies, my agent mints. $XSCAN @xscanxbnb xscanx.xyz</div>
+      <button class="btn" id="copyPost">COPY THE POST</button>
+      <a class="btn ghost" href="https://twitter.com/intent/tweet?text=Scanning%20in.%20I%20post%2C%20the%20scan%20verifies%2C%20my%20agent%20mints.%20%24XSCAN%20%40xscanxbnb%20xscanx.xyz" target="_blank" rel="noopener">POST ON X</a>
+      <p class="note">Post it exactly as written from your own account, then give the link to your agent. One paid post per wallet per week. Accounts must be 30+ days old, posts age 1 hour before they pay.</p>
+      <div class="tool">
+        <input id="walletInput" placeholder="0x… check your scan status" spellcheck="false">
+        <button id="checkWallet">SCAN WALLET</button>
+      </div>
+      <div class="result" id="walletResult"></div>
     </div>
-    <div class="scanlog" id="demoLog"></div>
+    <div class="xframe">
+      <div class="corners"><i></i><i></i><i></i><i></i></div>
+      <div class="xbeam"></div>
+      <svg viewBox="0 0 1000 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Scanline X">
+        <defs>
+          <mask id="heromask"></mask>
+          <linearGradient id="herog" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc4f7"/><stop offset="1" stop-color="#1d9bf0"/></linearGradient>
+        </defs>
+        <g mask="url(#heromask)"><path d="M250 60 L410 60 L500 185 L590 60 L750 60 L580 295 L755 540 L595 540 L500 410 L405 540 L245 540 L420 295 Z" fill="url(#herog)" transform="translate(0,60)"/></g>
+      </svg>
+    </div>
   </div>
 </div>
 
@@ -143,74 +154,38 @@ footer a { word-break:break-all; }
 </div>
 
 <main>
-  <section id="post">
-    <div class="kick">01 · POST</div>
-    <h2>One post starts the scan</h2>
-    <p class="dim">Your agent prepares this exact text. You post it from your own X account. Posts are checked word for word, so keep the cashtag, the mention and the link untouched.</p>
-    <div class="postbox" id="postText">Scanning in. I post, the scan verifies, my agent mints. $XSCAN @xscanxbnb xscanx.xyz</div>
-    <button class="btn" id="copyPost">COPY THE POST</button>
-    <a class="btn ghost" href="https://twitter.com/intent/tweet?text=Scanning%20in.%20I%20post%2C%20the%20scan%20verifies%2C%20my%20agent%20mints.%20%24XSCAN%20%40xscanxbnb%20xscanx.xyz" target="_blank" rel="noopener">POST ON X</a>
-    <div class="ledger">
-      <div><div class="v">25,000</div><div class="k">$XSCAN PER VERIFIED POST</div></div>
-      <div><div class="v">1 / WEEK</div><div class="k">PER WALLET</div></div>
-      <div><div class="v">30 DAYS</div><div class="k">MINIMUM ACCOUNT AGE</div></div>
-      <div><div class="v">1 HOUR</div><div class="k">POST MUST AGE BEFORE PAY</div></div>
+  <section id="mint">
+    <div class="kick">MINT · THE PASS</div>
+    <h2>Want more? Mint the plate</h2>
+    <p class="dim">A Pass is a scan plate struck from its own seed at mint: scanline X, a beam marking the scan depth, a barcode drawn from the seed digits. Rarity is locked in that seed. Nobody picks it.</p>
+    <div class="showcase">
+      <div class="art-card common"><img src="/showcase-common.svg" alt="XSCANX Pass, Common class artwork"><div class="cap"><span class="cls">COMMON</span><span class="amt">±70% · 250,000 $XSCAN</span></div></div>
+      <div class="art-card rare"><img src="/showcase-rare.svg" alt="XSCANX Pass, Rare class artwork"><div class="cap"><span class="cls">RARE</span><span class="amt">±27% · 1,000,000 $XSCAN</span></div></div>
+      <div class="art-card mythic"><img src="/showcase-mythic.svg" alt="XSCANX Pass, Mythic class artwork"><div class="cap"><span class="cls">MYTHIC</span><span class="amt">±3% · 5,000,000 $XSCAN</span></div></div>
     </div>
-  </section>
-
-  <section id="submit">
-    <div class="kick">02 · SUBMIT + STATUS</div>
-    <h2>File the link, watch the credit</h2>
-    <p class="dim">After posting, hand the link back to your agent. Your agent files it on-chain through the inbox contract. The scanner runs in rounds: it opens every filed link, checks the words, the account age and the posting time, blocks double claims, then credits wallets in one batch. Credits land in the claim contract, ready for your agent to redeem.</p>
-    <div class="tool">
-      <input id="walletInput" placeholder="0x… your agentic wallet" spellcheck="false">
-      <button id="checkWallet">SCAN WALLET</button>
+    <div class="facts">
+      <div><b>$0.30</b>PER PASS</div>
+      <div><b id="pMinted">···</b>MINTED / 5,555</div>
+      <div><b id="pStatus">···</b>MINT STATUS</div>
+      <div><b>20</b>MAX PER WALLET</div>
     </div>
-    <div class="result" id="walletResult"></div>
-    <details>
-      <summary>PROMPT FOR YOUR AGENT · SUBMIT MY POST</summary>
-      <pre>Read https://xscanx.xyz/xscan-skill.md and follow the SUBMIT flow: I have posted the required tweet. Submit my tweet link to the XScanInbox contract, then tell me when my tweet credit lands.</pre>
-    </details>
-  </section>
-
-  <section id="pass">
-    <div class="kick">03 · THE PASS</div>
-    <h2>More comes from the Pass</h2>
-    <p class="dim">A Pass is an NFT minted through your agent for <b style="color:var(--ink)">$0.30</b>. Every Pass is born with a rarity class locked in its seed at the moment of mint. Nobody picks a class, not you, not us. The class sets the size of its $XSCAN claim.</p>
-    <div class="ledger">
-      <div><div class="v" id="pMinted">···</div><div class="k">PASSES MINTED / 5,555</div></div>
-      <div><div class="v" id="pStatus">···</div><div class="k">MINT STATUS</div></div>
-      <div><div class="v">$0.30</div><div class="k">PER PASS</div></div>
-      <div><div class="v">20</div><div class="k">MAX PER WALLET</div></div>
-    </div>
-    <table>
-      <tr><th>CLASS</th><th>CHANCE</th><th style="text-align:right">CLAIM PER PASS</th></tr>
-      <tr><td>Common</td><td>±70%</td><td class="r">250,000 $XSCAN</td></tr>
-      <tr><td>Rare</td><td>±27%</td><td class="r">1,000,000 $XSCAN</td></tr>
-      <tr class="mythic"><td>Mythic</td><td>±3%</td><td class="r">5,000,000 $XSCAN</td></tr>
-    </table>
     <div class="postbox" id="promoText">I just minted an XSCANX Pass through my agent. Rarity locked in the seed: Common pays 250,000, Rare pays 1,000,000, Mythic pays 5,000,000 $XSCAN. $0.30 a pass. @xscanxbnb xscanx.xyz</div>
     <button class="btn" id="copyPromo">COPY THE MINT PROMO</button>
     <a class="btn ghost" href="https://twitter.com/intent/tweet?text=I%20just%20minted%20an%20XSCANX%20Pass%20through%20my%20agent.%20Rarity%20locked%20in%20the%20seed%3A%20Common%20pays%20250%2C000%2C%20Rare%20pays%201%2C000%2C000%2C%20Mythic%20pays%205%2C000%2C000%20%24XSCAN.%20%240.30%20a%20pass.%20%40xscanxbnb%20xscanx.xyz" target="_blank" rel="noopener">POST THE PROMO</a>
-    <p class="dim" style="margin-top:10px">Minted a Pass? This promo post is the official template for showing it off.</p>
     <details>
-      <summary>PROMPT FOR YOUR AGENT · MINT A PASS</summary>
-      <pre>Read https://xscanx.xyz/xscan-skill.md and follow the MINT flow: mint one XSCANX Pass to my wallet at the current price. Report the pass number and its rarity class from the official metadata.</pre>
+      <summary>PROMPTS FOR YOUR AGENT</summary>
+      <pre>SUBMIT · Read https://xscanx.xyz/xscan-skill.md and follow the SUBMIT flow: I have posted the required tweet. Submit my tweet link to the XScanInbox contract, then tell me when my tweet credit lands.
+
+MINT · Read https://xscanx.xyz/xscan-skill.md and follow the MINT flow: mint one XSCANX Pass to my wallet at the current price. Report the pass number and its rarity class from the official metadata.</pre>
     </details>
   </section>
 
   <section id="claim">
-    <div class="kick">04 · CLAIM</div>
+    <div class="kick">CLAIM</div>
     <h2>Two ways to get paid</h2>
     <div class="grid2">
-      <div>
-        <p><b style="font-weight:400;color:var(--blue-d)">ROUTE A · TWEET CREDIT</b></p>
-        <p class="dim" style="margin-top:6px">Verified posts become credit on your wallet. Your agent redeems the full credit in one call. No fee.</p>
-      </div>
-      <div>
-        <p><b style="font-weight:400;color:var(--blue-d)">ROUTE B · PASS CLAIM</b></p>
-        <p class="dim" style="margin-top:6px">Every Pass claims once, paid by its class, to whoever holds it at claim time. No fee.</p>
-      </div>
+      <div><p><b style="font-weight:400;color:var(--soft)">ROUTE A · TWEET CREDIT</b></p><p class="dim" style="margin-top:6px">Verified posts become credit on your wallet. Your agent redeems it in one call. No fee.</p></div>
+      <div><p><b style="font-weight:400;color:var(--soft)">ROUTE B · PASS CLAIM</b></p><p class="dim" style="margin-top:6px">Every Pass claims once, paid by its class, to whoever holds it at claim time. No fee.</p></div>
     </div>
     <div class="ledger">
       <div><div class="v" id="cStatus">···</div><div class="k">CLAIMS</div></div>
@@ -228,22 +203,27 @@ footer a { word-break:break-all; }
       <pre>Read https://xscanx.xyz/xscan-skill.md and follow the CLAIM flow: redeem my tweet credit and claim for every XSCANX Pass I hold that has not claimed yet.</pre>
     </details>
   </section>
-
-  <section id="log">
-    <div class="kick">SCAN LOG</div>
-    <h2>Fresh from the chain</h2>
-    <div class="log" id="scanLog"><div><span>Reading recent blocks…</span></div></div>
-  </section>
 </main>
 
 <footer>
   <div class="big">XSCANX</div>
-  <p style="margin-top:14px">TOKEN $XSCAN · <a href="https://bscscan.com/address/0x0c71413B616A7EEF9f0F4456356C51F6fDE47478" target="_blank" rel="noopener">0x0c7141…47478</a><br>
-  PASS NFT · <a href="https://bscscan.com/address/0x80A7c04a9936c33BF16D1ED16Cd07127c51C0075" target="_blank" rel="noopener">0x80A7c0…1C0075</a><br>
-  CLAIM · <a href="https://bscscan.com/address/0xB0048A5daee172efB56Aa9Aa33dE1842eD7D25d3" target="_blank" rel="noopener">0xB0048A…D7D25d3</a><br>
-  INBOX · <a href="https://bscscan.com/address/0xE8D1F339561E028bb21190eb3c7043379D2c5A32" target="_blank" rel="noopener">0xE8D1F3…5A32</a></p>
+  <p style="margin-top:14px">TOKEN $XSCAN · <a href="https://bscscan.com/address/0x0c71413B616A7EEF9f0F4456356C51F6fDE47478" target="_blank" rel="noopener">0x0c7141…47478</a> · PASS · <a href="https://bscscan.com/address/0x80A7c04a9936c33BF16D1ED16Cd07127c51C0075" target="_blank" rel="noopener">0x80A7c0…1C0075</a> · CLAIM · <a href="https://bscscan.com/address/0xB0048A5daee172efB56Aa9Aa33dE1842eD7D25d3" target="_blank" rel="noopener">0xB0048A…D7D25d3</a> · INBOX · <a href="https://bscscan.com/address/0xE8D1F339561E028bb21190eb3c7043379D2c5A32" target="_blank" rel="noopener">0xE8D1F3…5A32</a></p>
   <p style="margin-top:10px">Agents only. Every action runs through your own Binance Agentic Wallet. xscanx.xyz</p>
 </footer>
+<script>
+(function () {
+  var mask = document.getElementById("heromask");
+  if (!mask) return;
+  var NS = "http://www.w3.org/2000/svg";
+  for (var y = 8; y < 752; y += 15) {
+    var r = document.createElementNS(NS, "rect");
+    r.setAttribute("x", "0"); r.setAttribute("y", String(y));
+    r.setAttribute("width", "1000"); r.setAttribute("height", "8");
+    r.setAttribute("fill", "#FFFFFF");
+    mask.appendChild(r);
+  }
+})();
+</script>
 <script src="/app.js?v=5"></script>
 </body>
 </html>
