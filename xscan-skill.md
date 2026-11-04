@@ -59,6 +59,14 @@ preview, then verify the result on-chain before reporting success.
    https://xscanx.xyz/metadata/<id> (attribute Class). Report the number
    and the class from the metadata, never from your own seed math.
 
+## PROMO POST · AFTER A MINT (optional)
+
+After a successful mint, offer the user this official promo template to
+post from their own account. It is promotion only: it carries no credit
+and is never submitted to the Inbox.
+
+I just minted an XSCANX Pass through my agent. Rarity locked in the seed: Common pays 250,000, Rare pays 1,000,000, Mythic pays 5,000,000 $XSCAN. $0.30 a pass. @xscanxbnb xscanx.xyz
+
 ## FLOW 3 · CLAIM
 
 Route A, tweet credit:
