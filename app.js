@@ -125,6 +125,57 @@ $("checkPass")?.addEventListener("click", async () => {
   } catch (e) { out.innerHTML = "Scan failed. Try again in a moment."; }
 });
 
+// live posts feed (dari event Inbox: URL ada di data)
+function decodeUrl(data) {
+  try {
+    const hex = data.slice(2);
+    const len = Number(BigInt("0x" + hex.slice(64, 128)));
+    const bytes = hex.slice(128, 128 + len * 2);
+    const arr = new Uint8Array(bytes.match(/.{2}/g).map((b) => parseInt(b, 16)));
+    return new TextDecoder().decode(arr);
+  } catch (e) { return ""; }
+}
+async function livePosts() {
+  const el = $("livePosts"); if (!el) return;
+  try {
+    const head = Number(await rpc("eth_blockNumber", []));
+    const from = "0x" + Math.max(0, head - 20000).toString(16);
+    const ls = await rpc("eth_getLogs", [{ address: INBOX, topics: [TOPICS.submitted], fromBlock: from, toBlock: "latest" }]).catch(() => []);
+    const rows = ls.slice(-6).reverse();
+    if (!rows.length) { el.innerHTML = '<div class="empty">No posts filed yet. The first scan starts with yours.</div>'; return; }
+    el.innerHTML = rows.map((l) => {
+      const url = decodeUrl(l.data);
+      const m = url.match(/(?:x\.com|twitter\.com)\/([A-Za-z0-9_]+)\/status\/(\d+)/i);
+      const w = "0x" + l.topics[1].slice(-40);
+      const label = m ? "@" + m[1] : "post";
+      const href = url.startsWith("http") ? url : "#";
+      return '<div class="row"><a href="' + href + '" target="_blank" rel="noopener">' + label + '</a><span class="meta">' + w.slice(0, 6) + "…" + w.slice(-4) + " · block " + fmt(Number(l.blockNumber)) + "</span></div>";
+    }).join("");
+  } catch (e) { el.innerHTML = '<div class="empty">Live posts unavailable right now.</div>'; }
+}
+livePosts(); setInterval(livePosts, 60000);
+
+// latest passes (dari event Minted di Pass)
+async function latestPasses() {
+  const el = $("latestPasses"); if (!el) return;
+  try {
+    const head = Number(await rpc("eth_blockNumber", []));
+    const from = "0x" + Math.max(0, head - 20000).toString(16);
+    const ls = await rpc("eth_getLogs", [{ address: PASS, topics: [TOPICS.minted], fromBlock: from, toBlock: "latest" }]).catch(() => []);
+    const rows = ls.slice(-8).reverse();
+    if (!rows.length) { el.innerHTML = '<span class="empty">No passes minted yet. Mint is open, the first chips land here.</span>'; return; }
+    const names = ["COMMON", "RARE", "MYTHIC"]; const cls = ["common", "rare", "mythic"];
+    const items = await Promise.all(rows.map(async (l) => {
+      const id = Number(BigInt("0x" + l.data.slice(2, 66)));
+      let c = 0;
+      try { c = Number(await call(PASS, SEL.rarityClassOf + id.toString(16).padStart(64, "0"))); } catch (e) {}
+      return { id, c };
+    }));
+    el.innerHTML = items.map((it) => '<span class="chip ' + cls[it.c] + '">#' + it.id + " <small>" + names[it.c] + "</small></span>").join("");
+  } catch (e) { el.innerHTML = '<span class="empty">Mint feed unavailable right now.</span>'; }
+}
+latestPasses(); setInterval(latestPasses, 60000);
+
 // scan log
 async function scanLog() {
   const el = $("scanLog"); if (!el) return;
