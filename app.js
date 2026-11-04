@@ -41,7 +41,7 @@ const $ = (id) => document.getElementById(id);
   const lines = [
     '<div>› opening post x.com/···/status/···</div>',
     '<div>› handle <span class="ok">@yourhandle</span> · account age <span class="ok">412 days</span></div>',
-    '<div>› content match <span class="ok">$XSCAN ✓</span> · <span class="ok">xscanx.xyz ✓</span></div>',
+    '<div>› content match <span class="ok">$XSCAN ✓</span> · <span class="ok">@xscanxbnb ✓</span> · <span class="ok">xscanx.xyz ✓</span></div>',
     '<div>› wallet gate <span class="ok">Agent ID ✓</span> · double-claim <span class="ok">clear ✓</span></div>',
     '<div class="pay">› VERDICT · PAID 25,000 $XSCAN</div>'
   ];
