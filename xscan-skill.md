@@ -31,7 +31,7 @@ preview, then verify the result on-chain before reporting success.
 1. Hand the user this exact post text and wait until they confirm they
    posted it and give you the post link. Do not change a single character.
 
-   Scanning in. I post, the scan verifies, my agent mints. $XSCAN xscanx.xyz
+   Scanning in. I post, the scan verifies, my agent mints. $XSCAN @xscanxbnb xscanx.xyz
 
 2. Check the wallet: holdsAgentId must be true. Read lastSubmitAt(address)
    selector 0xeb8f43ef on the Inbox: filing is limited to once per 7 days.
