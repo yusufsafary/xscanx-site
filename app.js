@@ -59,6 +59,11 @@ $("copyPost")?.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText($("postText").textContent.trim()); $("copyPost").textContent = "COPIED"; setTimeout(() => $("copyPost").textContent = "COPY THE POST", 1800); } catch (e) {}
 });
 
+// copy mint promo
+$("copyPromo")?.addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText($("promoText").textContent.trim()); $("copyPromo").textContent = "COPIED"; setTimeout(() => $("copyPromo").textContent = "COPY THE MINT PROMO", 1800); } catch (e) {}
+});
+
 // live ledgers
 async function refresh() {
   try {
